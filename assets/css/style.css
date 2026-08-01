@@ -484,6 +484,34 @@ p.lede { font-size: clamp(1.05rem, 0.4vw + 1rem, 1.3rem); color: var(--grey-100)
   }
 }
 
+/* portfolio link cards */
+.site-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+  text-decoration: none;
+  transition: transform 0.18s ease, border-color 0.18s ease;
+}
+.site-card:hover { transform: translateY(-3px); border-color: var(--red-bright); }
+.site-card .site-name { color: var(--white); font-size: 1.2rem; }
+.site-card .site-url {
+  font-size: 0.85rem;
+  color: var(--grey-500);
+  word-break: break-all;
+}
+.site-card .visit {
+  margin-top: auto;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4em;
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--red-bright);
+}
+.site-card .visit svg { width: 14px; height: 14px; }
+
 /* stat tiles */
 .stat-tile {
   border: 1px solid var(--line);
