@@ -18,6 +18,21 @@
     });
   }
 
+  // Nav dropdown (click-toggle; works for touch + desktop, CSS handles hover)
+  document.querySelectorAll(".nav-item-dropdown").forEach(function (item) {
+    var toggle = item.querySelector(".nav-drop-toggle");
+    if (!toggle) return;
+    toggle.addEventListener("click", function (e) {
+      e.stopPropagation();
+      var isOpen = item.classList.contains("open");
+      document.querySelectorAll(".nav-item-dropdown.open").forEach(function (o) { o.classList.remove("open"); });
+      if (!isOpen) item.classList.add("open");
+    });
+  });
+  document.addEventListener("click", function () {
+    document.querySelectorAll(".nav-item-dropdown.open").forEach(function (o) { o.classList.remove("open"); });
+  });
+
   // Scroll reveal
   var revealEls = document.querySelectorAll("[data-reveal]");
   if ("IntersectionObserver" in window && revealEls.length) {
