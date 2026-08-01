@@ -1,137 +1,154 @@
-// The Farm Media — Instant Price Range Calculator (demo widget)
-// This mirrors the exact kind of tool we build directly into client sites.
+// The Farm Media — Instant Price Calculator (gated unlock demo)
+// Mirrors the real two-step "calculate -> unlock with contact info" flow
+// used on live client sites. This demo does not submit anywhere —
+// on a real build this posts straight into the client's CRM.
 (function () {
   "use strict";
 
-  var root = document.querySelector("[data-calculator]");
+  var root = document.querySelector("[data-gated-calc]");
   if (!root) return;
 
-  var sqftInput = root.querySelector("[data-sqft]");
-  var sqftValue = root.querySelector("[data-sqft-value]");
-  var coatingChips = root.querySelectorAll("[data-coating]");
-  var conditionChips = root.querySelectorAll("[data-condition]");
-  var sizeChips = root.querySelectorAll("[data-size-preset]");
+  var projectType = root.querySelector("#projectType");
+  var sqftInput = root.querySelector("#sqft");
+  var systemSelect = root.querySelector("#system");
+  var conditionSelect = root.querySelector("#condition");
+  var difficultySelect = root.querySelector("#difficulty");
 
-  var lowOut = root.querySelector("[data-low]");
-  var highOut = root.querySelector("[data-high]");
-  var sqftOut = root.querySelector("[data-out-sqft]");
-  var rateOut = root.querySelector("[data-out-rate]");
-  var conditionOut = root.querySelector("[data-out-condition]");
-  var progressBar = root.querySelector("[data-progress]");
+  var previewRange = root.querySelector("[data-preview-range]");
+  var previewOverlay = root.querySelector("[data-preview-overlay]");
+  var liveStatus = root.querySelector("[data-live-status]");
+  var progressStep2 = root.querySelector("[data-progress-2]");
 
-  // $ per sqft ranges — illustrative industry ballpark figures for demo purposes only
-  var COATING_RATES = {
-    solid: { low: 3, high: 5, label: "Solid Color Epoxy" },
-    flake: { low: 4, high: 7, label: "Flake / Chip Epoxy" },
-    poly: { low: 5, high: 9, label: "Polyaspartic / Polyurea" },
-    metallic: { low: 8, high: 12, label: "Metallic Epoxy" }
+  var showUnlockBtn = root.querySelector("[data-show-unlock]");
+  var unlockCard = root.querySelector("[data-unlock-card]");
+  var leadForm = root.querySelector("[data-lead-form]");
+  var unlockBtn = root.querySelector("[data-unlock-submit]");
+
+  var resultBox = root.querySelector("[data-result-box]");
+  var priceRangeEl = root.querySelector("[data-price-range]");
+  var resultText = root.querySelector("[data-result-text]");
+  var resetBtn = root.querySelector("[data-reset-calc]");
+
+  // $ per sqft base rates by coating system — illustrative, for demo purposes
+  var SYSTEM_RATES = {
+    solid: { low: 3.5, high: 5.5, label: "Solid Color Epoxy" },
+    flake: { low: 5.5, high: 7.5, label: "Full Broadcast Flake" },
+    poly: { low: 6.5, high: 9.5, label: "Polyaspartic / Polyurea" },
+    metallic: { low: 8.5, high: 12.5, label: "Metallic Epoxy" }
   };
+  var CONDITION_ADD = { good: 0.25, average: 0.5, rough: 0.75 };
+  var DIFFICULTY_ADD = { standard: 0, medium: 0, high: 1.0 };
 
-  var CONDITION_MULT = {
-    good: { mult: 1, label: "Good — ready to coat" },
-    minor: { mult: 1.12, label: "Minor cracks / pitting" },
-    major: { mult: 1.3, label: "Major repair needed" }
-  };
+  var pendingEstimate = null;
 
-  var state = {
-    sqft: parseInt(sqftInput ? sqftInput.value : 450, 10),
-    coating: "flake",
-    condition: "good"
-  };
+  function getEstimate() {
+    var sqft = parseFloat(sqftInput.value);
+    if (!sqft || sqft <= 0) return null;
 
-  function setActive(list, matchAttr, value) {
-    list.forEach(function (el) {
-      el.classList.toggle("active", el.getAttribute(matchAttr) === value);
-    });
+    var sys = SYSTEM_RATES[systemSelect.value] || SYSTEM_RATES.flake;
+    var condAdd = CONDITION_ADD[conditionSelect.value] || 0;
+    var diffAdd = DIFFICULTY_ADD[difficultySelect.value] || 0;
+
+    var lowRate = sys.low + condAdd + diffAdd;
+    var highRate = sys.high + condAdd + diffAdd;
+
+    var lowTotal = Math.round(sqft * lowRate);
+    var highTotal = Math.round(sqft * highRate);
+
+    return { sqft: sqft, systemLabel: sys.label, lowRate: lowRate, highRate: highRate, lowTotal: lowTotal, highTotal: highTotal };
   }
 
-  function roundTo(n, step) {
-    return Math.round(n / step) * step;
-  }
+  function currency(n) { return "$" + n.toLocaleString("en-US"); }
 
-  function currency(n) {
-    return "$" + n.toLocaleString("en-US");
-  }
-
-  function calculate() {
-    var rate = COATING_RATES[state.coating];
-    var cond = CONDITION_MULT[state.condition];
-    var low = roundTo(state.sqft * rate.low * cond.mult, 25);
-    var high = roundTo(state.sqft * rate.high * cond.mult, 25);
-
-    if (lowOut) lowOut.textContent = currency(low);
-    if (highOut) highOut.textContent = currency(high);
-    if (sqftOut) sqftOut.textContent = state.sqft.toLocaleString("en-US") + " sq ft";
-    if (rateOut) rateOut.textContent = "$" + rate.low + " – $" + rate.high + " / sq ft (" + rate.label + ")";
-    if (conditionOut) conditionOut.textContent = cond.label;
-
-    if (progressBar) {
-      var pct = Math.min(100, Math.round((state.sqft / 1200) * 100));
-      progressBar.style.width = pct + "%";
+  function updateLivePreview() {
+    var est = getEstimate();
+    if (!est) {
+      previewRange.textContent = "$4,850 – $6,200";
+      previewOverlay.textContent = "Enter your project details to start calculating…";
+      liveStatus.textContent = "Estimated range: calculating…";
+      pendingEstimate = null;
+      return;
     }
+    pendingEstimate = est;
+    previewRange.textContent = currency(est.lowTotal) + " – " + currency(est.highTotal);
+    previewOverlay.textContent = "Locked until you unlock your quote";
+    liveStatus.textContent = "Estimated range: calculating… based on " + est.sqft.toLocaleString("en-US") + " sq ft";
   }
 
-  if (sqftInput) {
-    sqftInput.addEventListener("input", function () {
-      state.sqft = parseInt(sqftInput.value, 10);
-      if (sqftValue) sqftValue.textContent = state.sqft.toLocaleString("en-US");
-      setActive(sizeChips, "data-size-preset", "");
-      calculate();
+  ["input", "change"].forEach(function (evt) {
+    [projectType, sqftInput, systemSelect, conditionSelect, difficultySelect].forEach(function (el) {
+      el.addEventListener(evt, updateLivePreview);
+    });
+  });
+
+  if (showUnlockBtn && unlockCard) {
+    showUnlockBtn.addEventListener("click", function () {
+      var sqft = parseFloat(sqftInput.value);
+      if (!sqft || sqft <= 0) {
+        sqftInput.focus();
+        sqftInput.style.borderColor = "var(--red-bright)";
+        return;
+      }
+      updateLivePreview();
+      unlockCard.classList.remove("hidden");
+      if (progressStep2) progressStep2.classList.add("active");
+      unlockCard.scrollIntoView({ behavior: "smooth", block: "nearest" });
     });
   }
 
-  coatingChips.forEach(function (chip) {
-    chip.addEventListener("click", function () {
-      state.coating = chip.getAttribute("data-coating");
-      setActive(coatingChips, "data-coating", state.coating);
-      calculate();
-    });
-  });
+  function revealResult() {
+    var est = pendingEstimate || getEstimate();
+    if (!est) return;
 
-  conditionChips.forEach(function (chip) {
-    chip.addEventListener("click", function () {
-      state.condition = chip.getAttribute("data-condition");
-      setActive(conditionChips, "data-condition", state.condition);
-      calculate();
-    });
-  });
+    priceRangeEl.textContent = currency(est.lowTotal) + " – " + currency(est.highTotal);
+    resultText.innerHTML = "Based on <strong>" + est.sqft.toLocaleString("en-US") + " sq ft</strong> of " + est.systemLabel.toLowerCase() +
+      " and the project details entered above, this project currently falls in the range shown. " +
+      "The next step on a real build is a free on-site consultation to confirm measurements and slab condition.";
 
-  sizeChips.forEach(function (chip) {
-    chip.addEventListener("click", function () {
-      var val = parseInt(chip.getAttribute("data-size-preset"), 10);
-      state.sqft = val;
-      if (sqftInput) sqftInput.value = val;
-      if (sqftValue) sqftValue.textContent = val.toLocaleString("en-US");
-      setActive(sizeChips, "data-size-preset", chip.getAttribute("data-size-preset"));
-      calculate();
-    });
-  });
+    resultBox.classList.remove("hidden");
+    resultBox.scrollIntoView({ behavior: "smooth", block: "nearest" });
+  }
 
-  // init defaults
-  setActive(coatingChips, "data-coating", state.coating);
-  setActive(conditionChips, "data-condition", state.condition);
-  if (sqftValue) sqftValue.textContent = state.sqft.toLocaleString("en-US");
-  calculate();
-
-  // lead capture form on calculator page (demo only)
-  var leadForm = document.querySelector("[data-calc-lead-form]");
   if (leadForm) {
     leadForm.addEventListener("submit", function (e) {
       e.preventDefault();
+      if (!pendingEstimate) {
+        updateLivePreview();
+        if (!pendingEstimate) return;
+      }
+
       var status = leadForm.querySelector(".form-status");
-      var resultSummary = leadForm.querySelector("[data-lead-summary]");
-      if (resultSummary && lowOut && highOut) {
-        resultSummary.value =
-          "Estimate: " + lowOut.textContent + " - " + highOut.textContent +
-          " | " + state.sqft + " sq ft | " + COATING_RATES[state.coating].label +
-          " | " + CONDITION_MULT[state.condition].label;
-      }
-      if (status) {
-        status.textContent = "This is a demo capture — in a live build, this lead (with the price range attached) lands straight in your CRM.";
-        status.classList.remove("err");
-        status.classList.add("show", "ok");
-      }
-      leadForm.reset();
+      unlockBtn.disabled = true;
+      unlockBtn.textContent = "Revealing Price…";
+
+      window.setTimeout(function () {
+        revealResult();
+        unlockBtn.disabled = false;
+        unlockBtn.textContent = "Reveal My Exact Ballpark Price";
+        if (status) {
+          status.textContent = "This is a demo — nothing was sent anywhere. On a live build, this exact submission (contact info + calculated estimate) posts straight into the client's CRM as a booked lead.";
+          status.classList.remove("err");
+          status.classList.add("show", "ok");
+        }
+        leadForm.reset();
+      }, 500);
     });
   }
+
+  if (resetBtn) {
+    resetBtn.addEventListener("click", function () {
+      projectType.value = "garage";
+      sqftInput.value = "";
+      systemSelect.value = "flake";
+      conditionSelect.value = "good";
+      difficultySelect.value = "standard";
+      pendingEstimate = null;
+      unlockCard.classList.add("hidden");
+      resultBox.classList.add("hidden");
+      if (progressStep2) progressStep2.classList.remove("active");
+      updateLivePreview();
+    });
+  }
+
+  updateLivePreview();
 })();
