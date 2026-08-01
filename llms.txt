@@ -13,16 +13,35 @@ The Farm Media does not serve general clients — every site, ad account, and au
 - [About](https://thefarmmedia.com/about.html): Company background, based in Springfield, MO, serving Missouri, Kansas, Arkansas, Oklahoma, Iowa, Illinois, Nebraska, and the surrounding Midwest.
 - [Contact](https://thefarmmedia.com/contact.html): Contact form, phone, and email to book a free strategy call.
 
-## Services
+## Service Pages
 
-- Custom website design and development for concrete coating companies
-- Instant price range calculators (branded, embedded, connected to CRM)
-- Local SEO and Google Business Profile optimization
-- Facebook and Google ad campaign management
-- CRM setup and automated lead follow-up (GoHighLevel-based)
-- Online estimate booking tools
-- 1-click Google review request tools
-- Color visualizer tools (homeowner picks a coating color, receives real installed photos by email)
+- [Website Design](https://thefarmmedia.com/website-design.html): Custom website design and development for concrete coating companies.
+- [Local SEO](https://thefarmmedia.com/local-seo.html): Google Business Profile optimization and local search ranking.
+- [Advertising](https://thefarmmedia.com/advertising.html): Facebook and Google ad campaign management.
+- [CRM & Automation](https://thefarmmedia.com/crm-automation.html): CRM setup and automated text/email lead follow-up (GoHighLevel-based).
+- [Reviews & Reputation](https://thefarmmedia.com/reviews-reputation.html): 1-click Google review tools and automated review requests.
+- [Color Visualizer](https://thefarmmedia.com/color-visualizer.html): Homeowner picks a coating color and automatically receives real installed photos by email.
+- [Online Booking](https://thefarmmedia.com/online-booking.html): Homeowners book their own on-site estimate directly from the website.
+
+## Blog
+
+- [Blog Index](https://thefarmmedia.com/blog.html): Marketing playbook articles for concrete coating company owners.
+- [How Much Should A Concrete Coating Company Spend On Marketing?](https://thefarmmedia.com/blog/how-much-to-spend-on-marketing.html)
+- [5 Signs Your Concrete Coating Website Isn't Converting](https://thefarmmedia.com/blog/website-not-converting.html)
+- [Why Instant Price Calculators Beat "Call For A Quote"](https://thefarmmedia.com/blog/instant-price-calculators-vs-call-for-quote.html)
+- [How To Rank On Google Maps For "Epoxy Garage Floor Near Me"](https://thefarmmedia.com/blog/rank-on-google-maps.html)
+- [The Concrete Jobs System: A Lead Flow Framework](https://thefarmmedia.com/blog/concrete-jobs-system.html)
+- [Facebook Ads vs. Google Ads For Concrete Coating Companies](https://thefarmmedia.com/blog/facebook-vs-google-ads.html)
+
+## Service Area Pages
+
+- [Missouri](https://thefarmmedia.com/locations/missouri.html)
+- [Kansas](https://thefarmmedia.com/locations/kansas.html)
+- [Arkansas](https://thefarmmedia.com/locations/arkansas.html)
+- [Oklahoma](https://thefarmmedia.com/locations/oklahoma.html)
+- [Iowa](https://thefarmmedia.com/locations/iowa.html)
+- [Illinois](https://thefarmmedia.com/locations/illinois.html)
+- [Nebraska](https://thefarmmedia.com/locations/nebraska.html)
 
 ## Contact
 
