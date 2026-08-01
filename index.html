@@ -256,61 +256,67 @@
         <p class="lede mt-sm">This is a live, working demo of an instant price range calculator — the same core tool we install, brand, and connect to your CRM.</p>
       </div>
 
-      <div class="calc-shell" data-reveal data-calculator>
-        <div class="calc-header">
-          <div class="dot-row"><span></span><span></span><span></span></div>
-          <span class="pill pill-red">Live Demo</span>
+      <div class="card" data-reveal data-gated-calc style="max-width:640px; margin-inline:auto;">
+        <div class="flex-between flex-wrap gap-sm" style="margin-bottom:1rem;">
+          <span class="eyebrow mb-0">Live Demo — Real Client Mechanic</span>
+          <span class="pill pill-red">Try It</span>
         </div>
-        <div class="calc-body">
-          <div>
-            <div class="field">
-              <label>Garage / Floor Size</label>
-              <div class="chip-group">
-                <button type="button" class="chip" data-size-preset="250">1-Car (~250 sqft)</button>
-                <button type="button" class="chip active" data-size-preset="450">2-Car (~450 sqft)</button>
-                <button type="button" class="chip" data-size-preset="650">3-Car (~650 sqft)</button>
-              </div>
-            </div>
-            <div class="field">
-              <label>Custom Square Footage: <span data-sqft-value>450</span> sqft</label>
-              <div class="range-row">
-                <input type="range" min="150" max="1500" step="25" value="450" data-sqft>
-              </div>
-            </div>
-            <div class="field">
-              <label>Coating Type</label>
-              <div class="chip-group">
-                <button type="button" class="chip" data-coating="solid">Solid Color Epoxy</button>
-                <button type="button" class="chip active" data-coating="flake">Flake / Chip Epoxy</button>
-                <button type="button" class="chip" data-coating="poly">Polyaspartic</button>
-                <button type="button" class="chip" data-coating="metallic">Metallic Epoxy</button>
-              </div>
-            </div>
-            <div class="field mb-0">
-              <label>Floor Condition</label>
-              <div class="chip-group">
-                <button type="button" class="chip active" data-condition="good">Good</button>
-                <button type="button" class="chip" data-condition="minor">Minor Cracks</button>
-                <button type="button" class="chip" data-condition="major">Major Repair</button>
-              </div>
-            </div>
-          </div>
+        <div class="progress-wrap">
+          <div class="progress-step active" data-progress-1>Step 1: Project Details ✅</div>
+          <div class="progress-arrow">&rarr;</div>
+          <div class="progress-step" data-progress-2>Step 2: Unlock Your Price 🔒</div>
+        </div>
 
-          <div class="calc-result">
-            <span class="label">Instant Price Range</span>
-            <div class="range"><span class="accent" data-low>$1,350</span> &ndash; <span data-high>$2,250</span></div>
-            <div class="breakdown">
-              <div><span>Floor Size</span><b data-out-sqft>450 sq ft</b></div>
-              <div><span>Rate Applied</span><b data-out-rate>$4 – $7 / sq ft</b></div>
-              <div><span>Condition</span><b data-out-condition>Good</b></div>
-            </div>
-            <p class="calc-disclaimer">Demo estimate only, for illustration. Real pricing on your live site is configured to your market, materials, and labor costs.</p>
+        <div class="grid grid-2">
+          <div class="field">
+            <label for="projectType">Project Type</label>
+            <select id="projectType">
+              <option value="garage">Garage Floor</option>
+              <option value="patio">Patio / Porch</option>
+              <option value="basement">Basement</option>
+              <option value="shop">Shop / Outbuilding</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="sqft">Approximate Square Footage</label>
+            <input id="sqft" type="number" min="1" placeholder="e.g. 550">
           </div>
         </div>
-        <div class="calc-footer">
-          <p class="mb-0" style="font-size:0.9rem;">Want this exact calculator, branded and installed on your site?</p>
-          <a href="/instant-price-calculator.html" class="btn btn-primary">Get This Built For You</a>
+        <div class="grid grid-2">
+          <div class="field">
+            <label for="system">Coating System</label>
+            <select id="system">
+              <option value="flake" selected>Full Broadcast Flake</option>
+              <option value="solid">Solid Color Epoxy</option>
+              <option value="poly">Polyaspartic / Polyurea</option>
+              <option value="metallic">Metallic Epoxy</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="condition">Concrete Condition</label>
+            <select id="condition">
+              <option value="good" selected>Good Condition</option>
+              <option value="average">Average / Minor Repairs</option>
+              <option value="rough">Cracks / Pitting / More Prep</option>
+            </select>
+          </div>
         </div>
+        <div class="field mb-0" style="display:none;">
+          <select id="difficulty"><option value="standard" selected>Standard</option></select>
+        </div>
+
+        <div class="locked-preview">
+          <div class="locked-badge">🔒 Live Estimate Preview</div>
+          <div style="font-size:0.8rem; color:var(--grey-500); text-transform:uppercase; letter-spacing:0.05em;">Your Estimated Price Range</div>
+          <div class="preview-range-wrap">
+            <div class="preview-range" data-preview-range>$4,850 – $6,200</div>
+            <div class="preview-overlay-text" data-preview-overlay>Enter your project details to start calculating…</div>
+          </div>
+          <div class="live-status" data-live-status>Estimated range: calculating…</div>
+        </div>
+
+        <a href="/instant-price-calculator.html" class="btn btn-primary btn-block mt-md">Unlock Your Exact Quote &rarr;</a>
+        <p class="mb-0 mt-sm center" style="font-size:0.85rem; color:var(--grey-500);">Want this exact calculator, branded and installed on your site? <a href="/contact.html" class="accent">Let's talk</a>.</p>
       </div>
     </div>
   </section>
