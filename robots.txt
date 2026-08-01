@@ -2,3 +2,5 @@ User-agent: *
 Allow: /
 
 Sitemap: https://thefarmmedia.com/sitemap.xml
+
+# LLM-friendly site overview: https://thefarmmedia.com/llms.txt
