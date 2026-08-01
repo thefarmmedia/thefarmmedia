@@ -42,6 +42,66 @@
     el.textContent = new Date().getFullYear();
   });
 
+  // Gallery filters
+  var filterBtns = document.querySelectorAll("[data-filter]");
+  var galleryItems = document.querySelectorAll("[data-category]");
+  filterBtns.forEach(function (btn) {
+    btn.addEventListener("click", function () {
+      filterBtns.forEach(function (b) { b.classList.remove("active"); });
+      btn.classList.add("active");
+      var val = btn.getAttribute("data-filter");
+      galleryItems.forEach(function (item) {
+        var show = val === "all" || item.getAttribute("data-category") === val;
+        item.style.display = show ? "" : "none";
+      });
+    });
+  });
+
+  // Lightbox
+  var lightbox = document.querySelector("[data-lightbox]");
+  if (lightbox) {
+    var lbImg = lightbox.querySelector("img");
+    var lbItems = Array.prototype.slice.call(document.querySelectorAll(".gallery-item"));
+    var lbIndex = 0;
+
+    function openLightbox(i) {
+      lbIndex = i;
+      var full = lbItems[i].getAttribute("href");
+      lbImg.src = full;
+      lbImg.alt = lbItems[i].querySelector("img").alt;
+      lightbox.classList.add("open");
+      document.body.style.overflow = "hidden";
+    }
+    function closeLightbox() {
+      lightbox.classList.remove("open");
+      document.body.style.overflow = "";
+    }
+    function step(dir) {
+      var visible = lbItems.filter(function (el) { return el.style.display !== "none"; });
+      var pos = visible.indexOf(lbItems[lbIndex]);
+      var nextEl = visible[(pos + dir + visible.length) % visible.length];
+      lbIndex = lbItems.indexOf(nextEl);
+      openLightbox(lbIndex);
+    }
+
+    lbItems.forEach(function (item, i) {
+      item.addEventListener("click", function (e) {
+        e.preventDefault();
+        openLightbox(i);
+      });
+    });
+    lightbox.querySelector("[data-lb-close]").addEventListener("click", closeLightbox);
+    lightbox.addEventListener("click", function (e) { if (e.target === lightbox) closeLightbox(); });
+    lightbox.querySelector("[data-lb-prev]").addEventListener("click", function () { step(-1); });
+    lightbox.querySelector("[data-lb-next]").addEventListener("click", function () { step(1); });
+    document.addEventListener("keydown", function (e) {
+      if (!lightbox.classList.contains("open")) return;
+      if (e.key === "Escape") closeLightbox();
+      if (e.key === "ArrowLeft") step(-1);
+      if (e.key === "ArrowRight") step(1);
+    });
+  }
+
   // Generic "demo" form handler (no backend wired up yet)
   document.querySelectorAll("form[data-demo-form]").forEach(function (form) {
     form.addEventListener("submit", function (e) {
