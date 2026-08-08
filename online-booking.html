@@ -24,6 +24,8 @@
 <meta name="twitter:title" content="Online Estimate Booking For Concrete Coating Companies | The Farm Media">
 <meta name="twitter:image" content="https://thefarmmedia.com/assets/img/og/og-default.jpg">
 
+<link rel="preload" as="font" type="font/woff2" href="/assets/fonts/BigShoulders-Bold.woff2" crossorigin>
+<link rel="preload" as="font" type="font/woff2" href="/assets/fonts/Outfit-Regular.woff2" crossorigin>
 <link rel="stylesheet" href="/assets/css/style.css">
 <script type="application/ld+json">
 {
@@ -41,12 +43,16 @@
   "@context": "https://schema.org",
   "@type": "FAQPage",
   "mainEntity": [
-    { "@type": "Question", "name": "Does this sync with my existing calendar?", "acceptedAnswer": { "@type": "Answer", "text": "Yes — it syncs with your real schedule so you never get double-booked." } },
+    { "@type": "Question", "name": "Does this sync with my existing calendar?", "acceptedAnswer": { "@type": "Answer", "text": "Yes — it syncs with your real schedule so you never get double-booked, and blocks off time you've already marked unavailable." } },
     { "@type": "Question", "name": "Can customers reschedule themselves?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. Every confirmation includes a link to reschedule or cancel without needing to call your office." } },
-    { "@type": "Question", "name": "What if I want to talk to the homeowner before booking an estimate?", "acceptedAnswer": { "@type": "Answer", "text": "We can set the flow up either way — instant self-booking, or a request that your team confirms first." } }
+    { "@type": "Question", "name": "What if I want to talk to the homeowner before booking an estimate?", "acceptedAnswer": { "@type": "Answer", "text": "We can set the flow up either way — instant self-booking, or a request that your team confirms first. Most clients start with instant booking and adjust based on what fits their process." } },
+    { "@type": "Question", "name": "Does this replace talking to customers on the phone?", "acceptedAnswer": { "@type": "Answer", "text": "No — it just removes the scheduling back-and-forth. You can still call to confirm details or answer questions; the booking itself just doesn't require it." } },
+    { "@type": "Question", "name": "What if I need to block off time for an existing job that runs long?", "acceptedAnswer": { "@type": "Answer", "text": "You can block time manually any time, and the calendar respects whatever's already on it — no double-bookings." } },
+    { "@type": "Question", "name": "Can I require a deposit to book an estimate?", "acceptedAnswer": { "@type": "Answer", "text": "That can be built in if it fits how you operate, though most clients keep the estimate booking itself free and simple to maximize how many people follow through." } }
   ]
 }
 </script>
+<link rel="preload" as="image" href="/assets/img/gallery/commercial/commercial-floor-coating-springfield-mo-3.webp" fetchpriority="high">
 </head>
 <body>
 <a class="skip-link" href="#main">Skip to content</a>
@@ -54,7 +60,7 @@
 <header class="site-header">
   <div class="container nav">
     <a class="brand" href="/">
-      <img src="/assets/img/brand/tfm-logo-mark-white-400.png" alt="The Farm Media logo" width="40" height="40">
+      <img src="/assets/img/brand/tfm-logo-mark-white-80.webp" alt="The Farm Media logo" width="40" height="40">
       <span class="brand-word">The Farm <span>Media</span></span>
     </a>
     <nav class="nav-links" id="nav-links">
@@ -88,7 +94,7 @@
 
 <main id="main">
 
-  <section class="page-hero photo-hero" style="--hero-img: url('/assets/img/gallery/commercial/commercial-floor-coating-springfield-mo-3.jpg');">
+  <section class="page-hero photo-hero" style="--hero-img: url('/assets/img/gallery/commercial/commercial-floor-coating-springfield-mo-3.webp');">
     <div class="container">
       <p class="breadcrumbs"><a href="/">Home</a><span>/</span>Online Booking</p>
       <span class="eyebrow">Online Booking</span>
@@ -110,10 +116,11 @@
           <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg> Easy rescheduling links so a change doesn't mean a phone call</li>
           <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg> Every booking lands in your CRM as a tracked lead</li>
         </ul>
+        <p class="mt-md">Every round of back-and-forth texting to land on a date and time is a chance for a homeowner to lose momentum and go book with whoever responded easiest. Self-service booking removes that friction entirely — the moment they're ready, they can lock in a time, and your calendar fills up without you or your team stopping mid-job to coordinate it.</p>
         <div class="mt-lg"><a href="/contact.html" class="btn btn-primary btn-lg">Get This Built For My Business</a></div>
       </div>
       <div data-reveal>
-        <img src="/assets/img/gallery/garage/epoxy-garage-floor-springfield-mo-4.jpg" alt="Grey flake epoxy garage floor coating with staircase in Springfield, MO" loading="lazy" style="border-radius:var(--radius-lg); border:1px solid var(--line-strong); box-shadow:var(--shadow-lg);">
+        <img src="/assets/img/gallery/garage/epoxy-garage-floor-springfield-mo-4.webp" width="900" height="675" alt="Grey flake epoxy garage floor coating with staircase in Springfield, MO" loading="lazy" style="border-radius:var(--radius-lg); border:1px solid var(--line-strong); box-shadow:var(--shadow-lg);">
       </div>
     </div>
   </section>
@@ -144,6 +151,21 @@
     </div>
   </section>
 
+  <section class="section">
+    <div class="container">
+      <div class="section-head center" data-reveal>
+        <span class="eyebrow">How It Works</span>
+        <h2>From Website Visit To Confirmed Estimate</h2>
+      </div>
+      <div class="steps" data-reveal>
+        <div class="step"><span class="num">01</span><h4>Homeowner Picks A Time</h4><p>They browse your live calendar directly on your website and pick a slot that works for them.</p></div>
+        <div class="step"><span class="num">02</span><h4>Instant Confirmation</h4><p>They get a text and email confirmation immediately — no waiting on a callback.</p></div>
+        <div class="step"><span class="num">03</span><h4>Automated Reminders</h4><p>Reminders go out leading up to the appointment, cutting down on no-shows and wasted trips.</p></div>
+        <div class="step"><span class="num">04</span><h4>Easy Changes</h4><p>If plans change, a reschedule link means it's handled without a phone call.</p></div>
+      </div>
+    </div>
+  </section>
+
   <section class="section" id="faq">
     <div class="container" style="max-width: 860px;">
       <div class="section-head center" data-reveal>
@@ -163,7 +185,19 @@
           <summary>What if I want to talk to the homeowner before booking an estimate?<span class="plus"></span></summary>
           <p>We can set the flow up either way — instant self-booking, or a request that your team confirms first. Most clients start with instant booking and adjust based on what fits their process.</p>
         </details>
-      </div>
+        <details class="faq-item">
+          <summary>Does this replace talking to customers on the phone?<span class="plus"></span></summary>
+          <p>No — it just removes the scheduling back-and-forth. You can still call to confirm details or answer questions; the booking itself just doesn't require it.</p>
+        </details>
+        <details class="faq-item">
+          <summary>What if I need to block off time for an existing job that runs long?<span class="plus"></span></summary>
+          <p>You can block time manually any time, and the calendar respects whatever's already on it — no double-bookings.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Can I require a deposit to book an estimate?<span class="plus"></span></summary>
+          <p>That can be built in if it fits how you operate, though most clients keep the estimate booking itself free and simple to maximize how many people follow through.</p>
+        </details>
+            </div>
     </div>
   </section>
 
@@ -188,7 +222,7 @@
     <div class="footer-grid">
       <div class="footer-brand">
         <a class="brand" href="/">
-          <img src="/assets/img/brand/tfm-logo-mark-white-400.png" alt="The Farm Media logo" width="40" height="40">
+          <img src="/assets/img/brand/tfm-logo-mark-white-80.webp" alt="The Farm Media logo" width="40" height="40">
           <span class="brand-word">The Farm <span>Media</span></span>
         </a>
         <p>More leads. Better systems. Bigger jobs. Based in Springfield, MO — building marketing systems exclusively for concrete coating companies across the Midwest.</p>

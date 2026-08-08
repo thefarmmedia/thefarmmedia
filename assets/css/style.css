@@ -8,28 +8,28 @@
 /* ---------------------------------- */
 @font-face {
   font-family: "Big Shoulders";
-  src: url("../fonts/BigShoulders-Bold.ttf") format("truetype");
+  src: url("../fonts/BigShoulders-Bold.woff2") format("woff2");
   font-weight: 700 900;
   font-style: normal;
   font-display: swap;
 }
 @font-face {
   font-family: "Big Shoulders";
-  src: url("../fonts/BigShoulders-Regular.ttf") format("truetype");
+  src: url("../fonts/BigShoulders-Regular.woff2") format("woff2");
   font-weight: 400 600;
   font-style: normal;
   font-display: swap;
 }
 @font-face {
   font-family: "Outfit";
-  src: url("../fonts/Outfit-Regular.ttf") format("truetype");
+  src: url("../fonts/Outfit-Regular.woff2") format("woff2");
   font-weight: 400 500;
   font-style: normal;
   font-display: swap;
 }
 @font-face {
   font-family: "Outfit";
-  src: url("../fonts/Outfit-Bold.ttf") format("truetype");
+  src: url("../fonts/Outfit-Bold.woff2") format("woff2");
   font-weight: 600 800;
   font-style: normal;
   font-display: swap;
@@ -508,14 +508,24 @@ p.lede { font-size: clamp(1.05rem, 0.4vw + 1rem, 1.3rem); color: var(--grey-100)
 }
 .hero-visual img { width: 100%; height: 100%; object-fit: cover; }
 
-/* animated hazard strip */
+/* animated hazard strip (transform-based so it stays GPU-composited) */
 .hazard {
   height: 10px;
-  background: repeating-linear-gradient(135deg, var(--red) 0 18px, #111 18px 36px);
-  background-size: 200% 100%;
-  animation: hazard-move 6s linear infinite;
+  position: relative;
+  overflow: hidden;
 }
-@keyframes hazard-move { from { background-position: 0 0; } to { background-position: -200px 0; } }
+.hazard::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  width: 200%;
+  background-image: repeating-linear-gradient(135deg, var(--red) 0 18px, #111 18px 36px);
+  background-size: 50% 100%;
+  background-repeat: repeat-x;
+  animation: hazard-move 6s linear infinite;
+  will-change: transform;
+}
+@keyframes hazard-move { from { transform: translateX(0); } to { transform: translateX(-50%); } }
 
 /* ---------------------------------- */
 /* Cards                               */
