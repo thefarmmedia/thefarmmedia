@@ -81,7 +81,7 @@
     });
   });
 
-  if (showUnlockBtn && unlockCard) {
+  if (showUnlockBtn) {
     showUnlockBtn.addEventListener("click", function () {
       var sqft = parseFloat(sqftInput.value);
       if (!sqft || sqft <= 0) {
@@ -90,9 +90,8 @@
         return;
       }
       updateLivePreview();
-      unlockCard.classList.remove("hidden");
       if (progressStep2) progressStep2.classList.add("active");
-      unlockCard.scrollIntoView({ behavior: "smooth", block: "nearest" });
+      revealResult();
     });
   }
 
@@ -116,22 +115,7 @@
         updateLivePreview();
         if (!pendingEstimate) return;
       }
-
-      var status = leadForm.querySelector(".form-status");
-      unlockBtn.disabled = true;
-      unlockBtn.textContent = "Revealing Price…";
-
-      window.setTimeout(function () {
-        revealResult();
-        unlockBtn.disabled = false;
-        unlockBtn.textContent = "Reveal My Exact Ballpark Price";
-        if (status) {
-          status.textContent = "This is a demo — nothing was sent anywhere. On a live build, this exact submission (contact info + calculated estimate) posts straight into the client's CRM as a booked lead.";
-          status.classList.remove("err");
-          status.classList.add("show", "ok");
-        }
-        leadForm.reset();
-      }, 500);
+      revealResult();
     });
   }
 
