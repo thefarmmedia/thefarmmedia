@@ -94,11 +94,7 @@
       <div class="card" data-reveal>
         <h3 class="mt-0">Request Your Free Strategy Call</h3>
         <p>No pressure, no scripts — just a straight conversation about your business.</p>
-        <form action="https://formsubmit.co/stephen@thefarmmedia.com" method="POST" class="mt-md" id="contact-form">
-          <input type="hidden" name="_subject" value="New Strategy Call Request — thefarmmedia.com">
-          <input type="hidden" name="_template" value="table">
-          <input type="hidden" name="_captcha" value="false">
-          <input type="hidden" name="_next" value="https://thefarmmedia.com/contact.html?sent=1">
+        <form class="mt-md" id="contact-form">
           <div class="grid grid-2">
             <div class="field"><label for="c-name">Full Name</label><input id="c-name" type="text" name="Name" required></div>
             <div class="field"><label for="c-company">Company Name</label><input id="c-company" type="text" name="Company" required></div>
@@ -211,12 +207,44 @@
 
 <script src="/assets/js/main.js"></script>
 <script>
-  if (new URLSearchParams(window.location.search).get("sent") === "1") {
+  (function () {
     var form = document.getElementById("contact-form");
     var banner = document.getElementById("sent-banner");
-    if (form) form.style.display = "none";
-    if (banner) banner.style.display = "block";
-  }
+    var btn = form ? form.querySelector("button[type=submit]") : null;
+
+    if (!form) return;
+
+    form.addEventListener("submit", function (e) {
+      e.preventDefault();
+
+      var payload = {
+        Name:           document.getElementById("c-name").value.trim(),
+        Company:        document.getElementById("c-company").value.trim(),
+        Email:          document.getElementById("c-email").value.trim(),
+        Phone:          document.getElementById("c-phone").value.trim(),
+        "Service Area": document.getElementById("c-location").value.trim(),
+        Message:        document.getElementById("c-message").value.trim(),
+        source:         "thefarmmedia.com Contact Form",
+        page:           window.location.href
+      };
+
+      if (btn) { btn.disabled = true; btn.textContent = "Sending…"; }
+
+      fetch("https://services.leadconnectorhq.com/hooks/s1ulgbz4zkwk2xSV1G68/webhook-trigger/bbe0b9d7-2742-446f-9d6c-68cf8f60a2bc", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload)
+      })
+      .then(function () {
+        form.style.display = "none";
+        if (banner) banner.style.display = "block";
+      })
+      .catch(function () {
+        if (btn) { btn.disabled = false; btn.textContent = "Request My Free Strategy Call"; }
+        alert("Something went wrong — please call or email us directly.");
+      });
+    });
+  })();
 </script>
 </body>
 </html>
