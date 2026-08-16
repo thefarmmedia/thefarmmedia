@@ -1,37 +1,37 @@
 # The Farm Media
 
-> The Farm Media is a marketing agency based in Springfield, Missouri that builds websites, local SEO, paid ads, and instant price range calculators exclusively for concrete coating companies (epoxy, polyaspartic, polyurea, and decorative concrete) across the Midwest.
+> The Farm Media is a marketing agency based in Springfield, Missouri that builds websites, local SEO, paid ads, and instant price range calculators for service contractors — including epoxy and concrete coating, roofing, HVAC, plumbing, landscaping, painting, pressure washing, and other home service trades — across the Midwest.
 
-The Farm Media does not serve general clients — every site, ad account, and automation is built specifically for concrete coating contractors. The flagship product is the "Instant Price Range Calculator," an interactive tool embedded on client websites that gives homeowners a real price range before they call, paired with a CRM pipeline ("The Concrete Jobs System™") that captures and follows up on leads automatically.
+The Farm Media focuses on service contractors who give estimates and complete jobs at customer locations. The flagship product is the "Instant Price Range Calculator," an interactive tool embedded on client websites that gives customers a real price range before they call, paired with a CRM pipeline ("The Service Pro System™") that captures and follows up on leads automatically.
 
 ## Pages
 
-- [Home](https://thefarmmedia.com/): Overview of The Farm Media's services, the Concrete Jobs System, a live demo of the instant price calculator, pricing, and results.
+- [Home](https://thefarmmedia.com/): Overview of The Farm Media's services, the Service Pro System, a live demo of the instant price calculator, pricing, and results.
 - [Instant Price Calculator](https://thefarmmedia.com/instant-price-calculator.html): Live interactive demo of the instant price range calculator tool built into client websites, including the real gated "calculate then unlock with contact info" lead-capture flow.
 - [Pricing](https://thefarmmedia.com/pricing.html): Website build pricing (starting at $2,499 one-time) and two monthly growth packages — Foundation ($500/mo, single-crew) and Scale ($1,000/mo, two-crew).
-- [Results](https://thefarmmedia.com/results.html): Real campaign statistics, a photo gallery of concrete coating jobs completed by clients, and links to live client websites.
+- [Results](https://thefarmmedia.com/results.html): Real campaign statistics, a photo gallery of jobs completed by clients, and links to live client websites.
 - [About](https://thefarmmedia.com/about.html): Company background, based in Springfield, MO, serving Missouri, Kansas, Arkansas, Oklahoma, Iowa, Illinois, Nebraska, and the surrounding Midwest.
 - [Contact](https://thefarmmedia.com/contact.html): Contact form, phone, and email to book a free strategy call.
 
 ## Service Pages
 
-- [Website Design](https://thefarmmedia.com/website-design.html): Custom website design and development for concrete coating companies.
+- [Website Design](https://thefarmmedia.com/website-design.html): Custom website design and development for service contractors.
 - [Local SEO](https://thefarmmedia.com/local-seo.html): Google Business Profile optimization and local search ranking.
 - [Advertising](https://thefarmmedia.com/advertising.html): Facebook and Google ad campaign management.
 - [CRM & Automation](https://thefarmmedia.com/crm-automation.html): CRM setup and automated text/email lead follow-up (GoHighLevel-based).
 - [Reviews & Reputation](https://thefarmmedia.com/reviews-reputation.html): 1-click Google review tools and automated review requests.
 - [Color Visualizer](https://thefarmmedia.com/color-visualizer.html): Homeowner picks a coating color and automatically receives real installed photos by email.
-- [Online Booking](https://thefarmmedia.com/online-booking.html): Homeowners book their own on-site estimate directly from the website.
+- [Online Booking](https://thefarmmedia.com/online-booking.html): Customers book their own on-site estimate directly from the website.
 
 ## Blog
 
-- [Blog Index](https://thefarmmedia.com/blog.html): Marketing playbook articles for concrete coating company owners.
+- [Blog Index](https://thefarmmedia.com/blog.html): Marketing playbook articles for service contractor owners.
 - [How Much Should A Concrete Coating Company Spend On Marketing?](https://thefarmmedia.com/blog/how-much-to-spend-on-marketing.html)
 - [5 Signs Your Concrete Coating Website Isn't Converting](https://thefarmmedia.com/blog/website-not-converting.html)
 - [Why Instant Price Calculators Beat "Call For A Quote"](https://thefarmmedia.com/blog/instant-price-calculators-vs-call-for-quote.html)
 - [How To Rank On Google Maps For "Epoxy Garage Floor Near Me"](https://thefarmmedia.com/blog/rank-on-google-maps.html)
-- [The Concrete Jobs System: A Lead Flow Framework](https://thefarmmedia.com/blog/concrete-jobs-system.html)
-- [Facebook Ads vs. Google Ads For Concrete Coating Companies](https://thefarmmedia.com/blog/facebook-vs-google-ads.html)
+- [The Service Pro System: A Lead Flow Framework](https://thefarmmedia.com/blog/concrete-jobs-system.html)
+- [Facebook Ads vs. Google Ads For Service Contractors](https://thefarmmedia.com/blog/facebook-vs-google-ads.html)
 
 ## Service Area Pages
 
