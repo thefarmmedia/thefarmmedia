@@ -207,44 +207,52 @@
 
 <script src="/assets/js/main.js"></script>
 <script>
-  (function () {
-    var form = document.getElementById("contact-form");
-    var banner = document.getElementById("sent-banner");
-    var btn = form ? form.querySelector("button[type=submit]") : null;
+(function () {
+  var WEBHOOK = "https://services.leadconnectorhq.com/hooks/s1ulgbz4zkwk2xSV1G68/webhook-trigger/bbe0b9d7-2742-446f-9d6c-68cf8f60a2bc";
+  var form = document.getElementById("contact-form");
+  var banner = document.getElementById("sent-banner");
 
-    if (!form) return;
-
+  if (form) {
+    var submitBtn = form.querySelector('[type=submit]');
     form.addEventListener("submit", function (e) {
       e.preventDefault();
+      submitBtn.disabled = true;
+      submitBtn.textContent = "Sending…";
 
       var payload = {
-        Name:           document.getElementById("c-name").value.trim(),
-        Company:        document.getElementById("c-company").value.trim(),
-        Email:          document.getElementById("c-email").value.trim(),
-        Phone:          document.getElementById("c-phone").value.trim(),
-        "Service Area": document.getElementById("c-location").value.trim(),
-        Message:        document.getElementById("c-message").value.trim(),
-        source:         "thefarmmedia.com Contact Form",
-        page:           window.location.href
+        full_name: form.querySelector('[name=Name]').value.trim(),
+        company: form.querySelector('[name=Company]').value.trim(),
+        email: form.querySelector('[name=Email]').value.trim(),
+        phone: form.querySelector('[name=Phone]').value.trim(),
+        service_area: form.querySelector('[name="Service Area"]').value.trim(),
+        message: form.querySelector('[name=Message]').value.trim(),
+        source: "Strategy Call Form — thefarmmedia.com"
       };
 
-      if (btn) { btn.disabled = true; btn.textContent = "Sending…"; }
-
-      fetch("https://services.leadconnectorhq.com/hooks/s1ulgbz4zkwk2xSV1G68/webhook-trigger/bbe0b9d7-2742-446f-9d6c-68cf8f60a2bc", {
+      fetch(WEBHOOK, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(payload)
       })
       .then(function () {
         form.style.display = "none";
-        if (banner) banner.style.display = "block";
+        banner.style.display = "block";
+        banner.scrollIntoView({ behavior: "smooth", block: "nearest" });
       })
       .catch(function () {
-        if (btn) { btn.disabled = false; btn.textContent = "Request My Free Strategy Call"; }
-        alert("Something went wrong — please call or email us directly.");
+        submitBtn.disabled = false;
+        submitBtn.textContent = "Request My Free Strategy Call";
+        var err = form.querySelector(".form-send-error");
+        if (!err) {
+          err = document.createElement("p");
+          err.className = "form-status err show form-send-error";
+          form.appendChild(err);
+        }
+        err.textContent = "Something went wrong. Please call us at (417) 365-5383.";
       });
     });
-  })();
+  }
+})();
 </script>
 </body>
 </html>
