@@ -50,10 +50,10 @@
   --grey-300: #b7b4ae;
   --grey-500: #8a8783;
   --grey-700: #5c5a57;
-  --red: #c41e26;
-  --red-bright: #e8232b;
-  --red-dark: #7c1015;
-  --red-glow: rgba(196, 30, 38, 0.45);
+  --red: #4db816;
+  --red-bright: #66e01c;
+  --red-dark: #2c6d0d;
+  --red-glow: rgba(77, 184, 22, 0.45);
   --green: #3fae5c;
   --amber: #e0a52c;
 
@@ -91,8 +91,8 @@ body {
   -webkit-font-smoothing: antialiased;
   overflow-x: hidden;
   background-image:
-    radial-gradient(ellipse 900px 500px at 12% -8%, rgba(196, 30, 38, 0.16), transparent 60%),
-    radial-gradient(ellipse 800px 500px at 100% 0%, rgba(196, 30, 38, 0.10), transparent 55%);
+    radial-gradient(ellipse 900px 500px at 12% -8%, rgba(77, 184, 22, 0.16), transparent 60%),
+    radial-gradient(ellipse 800px 500px at 100% 0%, rgba(77, 184, 22, 0.10), transparent 55%);
 }
 
 /* subtle grain overlay */
