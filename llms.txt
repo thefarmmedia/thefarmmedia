@@ -8,7 +8,7 @@ The Farm Media does not serve general clients — every site, ad account, and au
 
 - [Home](https://thefarmmedia.com/): Overview of The Farm Media's services, the Concrete Jobs System, a live demo of the instant price calculator, pricing, and results.
 - [Instant Price Calculator](https://thefarmmedia.com/instant-price-calculator.html): Live interactive demo of the instant price range calculator tool built into client websites, including the real gated "calculate then unlock with contact info" lead-capture flow.
-- [Pricing](https://thefarmmedia.com/pricing.html): Website build pricing (starting at $2,499 one-time) and two monthly growth packages — Foundation ($500/mo, single-crew) and Scale ($1,000/mo, two-crew).
+- [Pricing](https://thefarmmedia.com/pricing.html): Website build pricing (starting at $2,499 one-time) and three monthly growth packages — Foundation ($500/mo, single-crew), Scale ($1,000/mo, two-crew), and Dominate ($2,000/mo, 3+ crew, 70+ leads/mo target).
 - [Results](https://thefarmmedia.com/results.html): Real campaign statistics, a photo gallery of concrete coating jobs completed by clients, and links to live client websites.
 - [About](https://thefarmmedia.com/about.html): Company background, based in Springfield, MO, serving Missouri, Kansas, Arkansas, Oklahoma, Iowa, Illinois, Nebraska, and the surrounding Midwest.
 - [Contact](https://thefarmmedia.com/contact.html): Contact form, phone, and email to book a free strategy call.
@@ -32,6 +32,7 @@ The Farm Media does not serve general clients — every site, ad account, and au
 - [How To Rank On Google Maps For "Epoxy Garage Floor Near Me"](https://thefarmmedia.com/blog/rank-on-google-maps.html)
 - [The Concrete Jobs System: A Lead Flow Framework](https://thefarmmedia.com/blog/concrete-jobs-system.html)
 - [Facebook Ads vs. Google Ads For Concrete Coating Companies](https://thefarmmedia.com/blog/facebook-vs-google-ads.html)
+- [SEO For Concrete Coating Companies: What Actually Moves The Needle](https://thefarmmedia.com/blog/seo-for-concrete-coating-companies.html)
 
 ## Service Area Pages
 
