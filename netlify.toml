@@ -1,0 +1,3 @@
+# Keep .html canonical URLs stable; explicit aliases are in _redirects.
+[build.processing.html]
+  pretty_urls = false
