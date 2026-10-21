@@ -1,1 +1,37 @@
+# Preserve existing canonical URLs. Netlify matches optional trailing slashes.
 /index.html  /  301!
+
+# Legacy homepage and contact URLs observed in Search Console.
+/home  /  301!
+/home-1727  /  301!
+/thefarmmedia.com  /  301!
+/contact-us  /contact.html  301!
+
+# Redirect extensionless copies to the matching canonical page.
+/about  /about.html  301!
+/advertising  /advertising.html  301!
+/blog/concrete-jobs-system  /blog/concrete-jobs-system.html  301!
+/blog/facebook-vs-google-ads  /blog/facebook-vs-google-ads.html  301!
+/blog/how-much-to-spend-on-marketing  /blog/how-much-to-spend-on-marketing.html  301!
+/blog/instant-price-calculators-vs-call-for-quote  /blog/instant-price-calculators-vs-call-for-quote.html  301!
+/blog/rank-on-google-maps  /blog/rank-on-google-maps.html  301!
+/blog/seo-for-concrete-coating-companies  /blog/seo-for-concrete-coating-companies.html  301!
+/blog/website-not-converting  /blog/website-not-converting.html  301!
+/blog  /blog.html  301!
+/color-visualizer  /color-visualizer.html  301!
+/contact  /contact.html  301!
+/crm-automation  /crm-automation.html  301!
+/instant-price-calculator  /instant-price-calculator.html  301!
+/local-seo  /local-seo.html  301!
+/locations/arkansas  /locations/arkansas.html  301!
+/locations/illinois  /locations/illinois.html  301!
+/locations/iowa  /locations/iowa.html  301!
+/locations/kansas  /locations/kansas.html  301!
+/locations/missouri  /locations/missouri.html  301!
+/locations/nebraska  /locations/nebraska.html  301!
+/locations/oklahoma  /locations/oklahoma.html  301!
+/online-booking  /online-booking.html  301!
+/pricing  /pricing.html  301!
+/results  /results.html  301!
+/reviews-reputation  /reviews-reputation.html  301!
+/website-design  /website-design.html  301!
