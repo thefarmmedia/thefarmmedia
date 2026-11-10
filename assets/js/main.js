@@ -33,6 +33,66 @@
     document.querySelectorAll(".nav-item-dropdown.open").forEach(function (o) { o.classList.remove("open"); });
   });
 
+  var reduceMotion = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  // Grids reveal children one by one (capped so long galleries don't lag)
+  document.querySelectorAll("[data-reveal].grid, [data-reveal].steps, [data-reveal].gallery-grid, [data-reveal].pricing-grid").forEach(function (el) {
+    el.setAttribute("data-stagger", "");
+    Array.prototype.forEach.call(el.children, function (child, i) {
+      child.style.setProperty("--i", Math.min(i, 8));
+    });
+  });
+
+  // Header state + scroll progress bar
+  var header = document.querySelector(".site-header");
+  if (header) {
+    var bar = document.createElement("div");
+    bar.className = "scroll-progress";
+    bar.setAttribute("aria-hidden", "true");
+    header.appendChild(bar);
+    var ticking = false;
+    var onScroll = function () {
+      var y = window.scrollY;
+      var max = document.documentElement.scrollHeight - window.innerHeight;
+      header.classList.toggle("scrolled", y > 24);
+      bar.style.transform = "scaleX(" + (max > 0 ? Math.min(y / max, 1) : 0) + ")";
+      ticking = false;
+    };
+    window.addEventListener("scroll", function () {
+      if (!ticking) { ticking = true; requestAnimationFrame(onScroll); }
+    }, { passive: true });
+    onScroll();
+  }
+
+  // Count-up for stat numbers like "10,000+", "$2,767", "1,000s"
+  function countUp(el) {
+    var m = el.textContent.match(/^(\D*)([\d,]+)(.*)$/);
+    if (!m) return;
+    var target = parseInt(m[2].replace(/,/g, ""), 10);
+    if (!target) return;
+    var start = null, dur = 1600;
+    var frame = function (t) {
+      if (start === null) start = t;
+      var p = Math.min((t - start) / dur, 1);
+      var eased = 1 - Math.pow(1 - p, 3);
+      el.textContent = m[1] + Math.round(target * eased).toLocaleString("en-US") + m[3];
+      if (p < 1) requestAnimationFrame(frame);
+    };
+    requestAnimationFrame(frame);
+  }
+  var counters = document.querySelectorAll(".stat-tile b, .hero-proof .stat b");
+  if (!reduceMotion && "IntersectionObserver" in window && counters.length) {
+    var cio = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          countUp(entry.target);
+          cio.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.6 });
+    counters.forEach(function (el) { cio.observe(el); });
+  }
+
   // Scroll reveal
   var revealEls = document.querySelectorAll("[data-reveal]");
   if ("IntersectionObserver" in window && revealEls.length) {
