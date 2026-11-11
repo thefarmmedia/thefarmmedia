@@ -1,7 +1,3 @@
-# Send www (http or https) straight to the canonical host in one hop.
-http://www.thefarmmedia.com/*  https://thefarmmedia.com/:splat  301!
-https://www.thefarmmedia.com/*  https://thefarmmedia.com/:splat  301!
-
 # Preserve existing canonical URLs. Netlify matches optional trailing slashes.
 /index.html  /  301!
 
